@@ -187,35 +187,27 @@ function getPriorityBadge(priority) {
 }
 
 function getLabelBadges(label) {
-  const l = label?.toLowerCase();
+    if (!label || label.toLowerCase() === "no label") {
+        return `
+            <span class="text-[9px] font-semibold px-2 py-1 rounded-full bg-[#F4F5F7] text-[#9AA1A9]"># NO LABEL</span>
+        `;
+    }
 
-  if (l === "bug") {
-    return `
-      <span class="text-[9px] font-semibold px-2 py-1 rounded-full bg-[#FDECEC] text-[#E96A6A]"># BUG</span>
-    `;
-  }
+    const l = label.toLowerCase();
 
-  if (l === "enhancement") {
-    return `
-      <span class="text-[9px] font-semibold px-2 py-1 rounded-full bg-[#E9FBF1] text-[#19B36B]"># ENHANCEMENT</span>
-    `;
-  }
+    if (l === "bug") {
+        return `<span class="text-[9px] font-semibold px-2 py-1 rounded-full bg-[#FDECEC] text-[#E96A6A]"># BUG</span>`;
+    }
 
-  if (l === "help wanted") {
-    return `
-      <span class="text-[9px] font-semibold px-2 py-1 rounded-full bg-[#FFF4D6] text-[#D9A400]"># HELP WANTED</span>
-    `;
-  }
+    if (l === "enhancement") {
+        return `<span class="text-[9px] font-semibold px-2 py-1 rounded-full bg-[#E9FBF1] text-[#19B36B]"># ENHANCEMENT</span>`;
+    }
 
-  if (l === "no label" || !label) {
-    return `
-      <span class="text-[9px] font-semibold px-2 py-1 rounded-full bg-[#F4F5F7] text-[#9AA1A9]"># NO LABEL</span>
-    `;
-  }
+    if (l === "help wanted") {
+        return `<span class="text-[9px] font-semibold px-2 py-1 rounded-full bg-[#FFF4D6] text-[#D9A400]"># HELP WANTED</span>`;
+    }
 
-  return `
-    <span class="text-[9px] font-semibold px-2 py-1 rounded-full bg-[#F4F5F7] text-[#9AA1A9]"># ${label.toUpperCase()}</span>
-  `;
+    return `<span class="text-[9px] font-semibold px-2 py-1 rounded-full bg-[#F4F5F7] text-[#9AA1A9]"># ${label.toUpperCase()}</span>`;
 }
 
 function formatDate(dateString) {
