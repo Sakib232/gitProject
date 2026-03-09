@@ -192,7 +192,6 @@ function getLabelBadges(label) {
   if (l === "bug") {
     return `
       <span class="text-[9px] font-semibold px-2 py-1 rounded-full bg-[#FDECEC] text-[#E96A6A]"># BUG</span>
-      <span class="text-[9px] font-semibold px-2 py-1 rounded-full bg-[#FFF4D6] text-[#D9A400]"># HELP WANTED</span>
     `;
   }
 
@@ -208,8 +207,14 @@ function getLabelBadges(label) {
     `;
   }
 
+  if (l === "no label" || !label) {
+    return `
+      <span class="text-[9px] font-semibold px-2 py-1 rounded-full bg-[#F4F5F7] text-[#9AA1A9]"># NO LABEL</span>
+    `;
+  }
+
   return `
-    <span class="text-[9px] font-semibold px-2 py-1 rounded-full bg-[#F4F5F7] text-[#9AA1A9]"># ${label || "NO LABEL"}</span>
+    <span class="text-[9px] font-semibold px-2 py-1 rounded-full bg-[#F4F5F7] text-[#9AA1A9]"># ${label.toUpperCase()}</span>
   `;
 }
 
